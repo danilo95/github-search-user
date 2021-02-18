@@ -13,6 +13,11 @@ export const TotalDisplay = styled.p`
 	font-weight: bold;
 `;
 
+export const TitleContainer = styled.div`
+	display: flex;
+	width: 100px;
+`;
+
 export const Footer = styled.div`
 	width: 100%;
 	justify-content: center;

@@ -1,5 +1,7 @@
 import React from 'react';
 import { List } from 'antd';
+import FavoriteItem from '../favoriteItem/FavoriteItem';
+import { TitleContainer } from '../globalStyle/Index';
 import History from '../history/History';
 
 const ListOfUsers = ({ items }) => {
@@ -22,7 +24,18 @@ const ListOfUsers = ({ items }) => {
 							/>
 						}
 					>
-						<List.Item.Meta title={<span>{item.login}</span>} />
+						<List.Item.Meta
+							title={
+								<TitleContainer>
+									<span>{item.login}</span>
+									<FavoriteItem
+										id={item.id}
+										userName={item.login}
+										img={item.avatar_url}
+									/>
+								</TitleContainer>
+							}
+						/>
 					</List.Item>
 				)}
 			/>
