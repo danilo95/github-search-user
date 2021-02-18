@@ -4,9 +4,9 @@ const url = axios.create({
 	baseURL: 'https://api.github.com/',
 });
 
-export const getListOfUsers = (params) => {
+export const getListOfUsers = (params, page) => {
 	let result = url
-		.get(`/search/users?q=${params}`)
+		.get(`/search/users?q=${params}&page=${page}&per_page=20`)
 		.then((response) => {
 			return response.data;
 		})

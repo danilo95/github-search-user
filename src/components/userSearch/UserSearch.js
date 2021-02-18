@@ -24,7 +24,12 @@ const UserSearch = () => {
 
 	const onSubmit = () => {
 		dispatch(loadingUsers());
-		dispatch(searchUsersByName(searchTerm));
+		dispatch(searchUsersByName(searchTerm, 1));
+	};
+
+	const handlePagination = (page) => {
+		dispatch(loadingUsers());
+		dispatch(searchUsersByName(searchTerm, page));
 	};
 
 	return (
@@ -39,16 +44,17 @@ const UserSearch = () => {
 			{!loadingListOfUsers && listOfUsers && (
 				<ListOfUsers items={listOfUsers} />
 			)}
-
-			<Footer>
-				<Pagination
-					defaultCurrent={1}
-					total={totalPages}
-					simple={true}
-					onChange={console.log(1)}
-					defaultPageSize={30}
-				/>
-			</Footer>
+			{listOfUsers.length > 0 && (
+				<Footer>
+					<Pagination
+						simple
+						defaultCurrent={1}
+						total={totalUsers}
+						onChange={handlePagination}
+						defaultPageSize={20}
+					/>
+				</Footer>
+			)}
 		</div>
 	);
 };

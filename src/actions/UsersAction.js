@@ -11,9 +11,8 @@ export const loadingUsers = () => (dispatch) => {
 	dispatch({ type: types.LOADING_USERS, payload: true });
 };
 
-export const searchUsersByName = (params) => async (dispatch) => {
-	const response = await getListOfUsers(params);
-	console.log('response', response);
+export const searchUsersByName = (params, page) => async (dispatch) => {
+	const response = await getListOfUsers(params, page);
 	if (response.error) {
 		dispatch({
 			type: types.ERROR_FETCH_USERS,

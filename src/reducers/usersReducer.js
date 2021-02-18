@@ -21,11 +21,13 @@ export default (state = initialState, action) => {
 				...state,
 				totalUsers: action.payload,
 			};
-		case types.GET_SINGLE_CHARACTER_ERROR:
+		case types.ERROR_FETCH_USERS:
 			return {
 				...state,
-				error: action.payload,
 				loadingListOfUsers: false,
+				totalUsers: 0,
+				listOfUsers: [],
+				error: action.payload,
 			};
 
 		case types.LOADING_USERS:
