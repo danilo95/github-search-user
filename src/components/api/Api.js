@@ -18,25 +18,22 @@ export const getListOfUsers = (params, page) => {
 };
 
 const hadleError = (httpRequest) => {
-	let { status } = httpRequest;
+	let { status, data } = httpRequest;
+	let { message: serverMessage } = data;
 	let error = {};
 	let message = '';
 	switch (status) {
 		case 404:
-			message =
-				'Oops, the resource you were looking for was not finding.';
+			message = `Oops, the resource you were looking for was not finding/${serverMessage}`;
 			break;
 		case 401:
-			message =
-				'You do not have the proper permissions to make this request';
+			message = `You do not have the proper permissions to make this request/${serverMessage}`;
 			break;
 		case 500:
-			message =
-				'something happened unexpectedly, this is not your fault.please reload the page';
+			message = `something happened unexpectedly, this is not your fault.please reload the page/${serverMessage}`;
 			break;
 		default:
-			message =
-				'something goes wrong, please reload the page and try again';
+			message = `$something goes wrong, please reload the page and try again/ ${serverMessage}`;
 			status = 500;
 			break;
 	}

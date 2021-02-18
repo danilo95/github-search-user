@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ListOfUsers from '../listOfUsers/ListOfUsers';
 import LoadingView from '../loading/Loading';
+import ErrorPage from '../errorPage/ErrorPage';
 import { loadingUsers, searchUsersByName } from '../../actions/UsersAction';
 import { Pagination } from 'antd';
 import SearchUserForm from '../searchUserForm/SearchUserForm';
-import { Footer } from '../globalStyle/Index';
+import { Footer, TotalDisplay } from '../globalStyle/Index';
 
 const UserSearch = () => {
 	const dispatch = useDispatch();
@@ -39,9 +40,12 @@ const UserSearch = () => {
 				handleOnChange={handleOnChange}
 				onSubmit={onSubmit}
 			/>
-			<p>{`Total Found: ${totalUsers}`}</p>
+			<TotalDisplay>{`Total Found: ${totalUsers}`}</TotalDisplay>
+			{error.code && (
+				<ErrorPage code={error.code} message={error.message} />
+			)}
 			{loadingListOfUsers && <LoadingView />}
-			{!loadingListOfUsers && listOfUsers && (
+			{!loadingListOfUsers && listOfUsers?.length > 0 && (
 				<ListOfUsers items={listOfUsers} />
 			)}
 			{listOfUsers.length > 0 && (

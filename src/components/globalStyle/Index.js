@@ -8,6 +8,10 @@ export const LayoutWrapper = styled.div`
 	box-sizing: border-box;
 	padding: 0 35px;
 `;
+export const TotalDisplay = styled.p`
+	padding: 10px 0px;
+	font-weight: bold;
+`;
 
 export const Footer = styled.div`
 	width: 100%;
