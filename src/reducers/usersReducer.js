@@ -2,6 +2,7 @@ import { types } from '../actions/UsersAction';
 
 const initialState = {
 	listOfUsers: [],
+	totalUsers: 0,
 	loadingListOfUsers: false,
 	error: {},
 };
@@ -14,6 +15,11 @@ export default (state = initialState, action) => {
 				listOfUsers: action.payload,
 				loadingListOfUsers: false,
 				error: {},
+			};
+		case types.TOTAL_USERS:
+			return {
+				...state,
+				totalUsers: action.payload,
 			};
 		case types.GET_SINGLE_CHARACTER_ERROR:
 			return {

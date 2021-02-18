@@ -14,9 +14,9 @@ const suffix = (
 	/>
 );
 
-const SearchUserForm = ({ searchTerm, handleOnChange }) => {
-	const onSearch = (value) => {
-		console.log(searchTerm);
+const SearchUserForm = ({ searchTerm, handleOnChange, onSubmit }) => {
+	const onSearch = () => {
+		onSubmit();
 	};
 	return (
 		<FormContainer>

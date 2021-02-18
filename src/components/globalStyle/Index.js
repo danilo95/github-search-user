@@ -9,6 +9,14 @@ export const LayoutWrapper = styled.div`
 	padding: 0 35px;
 `;
 
+export const Footer = styled.div`
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	padding: 30px;
+`;
+
 //here start global styles
 export const GlobalStyle = createGlobalStyle`
 
