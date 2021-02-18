@@ -5,6 +5,9 @@ const SelectedUser = lazy(() =>
 );
 const NotFoundPage = lazy(() => import('./components/notFound/NotFound'));
 const PublicRoute = lazy(() => import('./components/publicRoute/PublicRoute'));
+const FavoriteUsersList = lazy(() =>
+	import('./components/favoriteUsersList/FavoriteUsersList')
+);
 
 export default [
 	{
@@ -30,6 +33,13 @@ export default [
 	},
 	{
 		key: 4,
+		path: '/favorites',
+		exact: true,
+		type: PublicRoute,
+		component: FavoriteUsersList,
+	},
+	{
+		key: 5,
 		type: PublicRoute,
 		component: NotFoundPage,
 	},
