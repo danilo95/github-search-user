@@ -9,6 +9,7 @@ import SearchUserForm from '../searchUserForm/SearchUserForm';
 import { Footer, TotalDisplay } from '../globalStyle/Index';
 
 const UserSearch = () => {
+	const [currentPage, setCurrentPage] = useState(1);
 	const dispatch = useDispatch();
 	const { listOfUsers, loadingListOfUsers, totalUsers, error } = useSelector(
 		(state) => state.users
@@ -25,11 +26,13 @@ const UserSearch = () => {
 	const onSubmit = () => {
 		dispatch(loadingUsers());
 		dispatch(searchUsersByName(searchTerm, 1));
+		setCurrentPage(1);
 	};
 
 	const handlePagination = (page) => {
 		dispatch(loadingUsers());
 		dispatch(searchUsersByName(searchTerm, page));
+		setCurrentPage(page);
 	};
 
 	return (
@@ -51,7 +54,7 @@ const UserSearch = () => {
 				<Footer>
 					<Pagination
 						simple
-						defaultCurrent={1}
+						current={currentPage}
 						total={totalUsers}
 						onChange={handlePagination}
 						defaultPageSize={20}
