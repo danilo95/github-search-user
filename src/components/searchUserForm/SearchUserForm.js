@@ -16,7 +16,9 @@ const suffix = (
 
 const SearchUserForm = ({ searchTerm, handleOnChange, onSubmit }) => {
 	const onSearch = () => {
-		onSubmit();
+		if (searchTerm) {
+			onSubmit();
+		}
 	};
 	return (
 		<FormContainer>
