@@ -10,6 +10,10 @@ import {
 import { Label } from '../globalStyle/Index';
 
 const UserInfo = ({ user }) => {
+	const handleRedirect = (path) => {
+		window.location.href = path;
+	};
+
 	const Content = ({ children }) => (
 		<Row>
 			<div style={{ flex: 1 }}>{children}</div>
@@ -21,7 +25,11 @@ const UserInfo = ({ user }) => {
 			title={user.login}
 			subTitle={`Followers ${user.followers}`}
 			extra={[
-				<Button key="1" type="primary">
+				<Button
+					key="1"
+					type="primary"
+					onClick={() => handleRedirect(user.html_url)}
+				>
 					Github profile
 				</Button>,
 			]}

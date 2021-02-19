@@ -38,8 +38,9 @@ const SelectedUser = () => {
 			)}
 			{loadingInfo && <LoadingView />}
 			{!loadingInfo && !userError.code && <UserInfo user={userInfo} />}
-			<h2>Repositories</h2>
-			<UserRepos loading={loadingUserRepos} repos={userRepos} />
+			{!userReposError.code && (
+				<UserRepos loading={loadingUserRepos} repos={userRepos} />
+			)}
 		</div>
 	);
 };
