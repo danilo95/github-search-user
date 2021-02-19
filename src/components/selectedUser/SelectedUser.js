@@ -20,7 +20,13 @@ const SelectedUser = () => {
 
 	return (
 		<div>
-			<UserInfo user={userInfo} />
+			{userError.code && (
+				<ErrorPage code={userError.code} message={userError.message} />
+			)}
+			{loadingInfo && <LoadingView />}
+			{!loadingInfo && userInfo?.length > 0 && (
+				<UserInfo user={userInfo} />
+			)}
 		</div>
 	);
 };
