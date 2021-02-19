@@ -1,13 +1,22 @@
 import React from 'react';
 import { List, Button } from 'antd';
+import { StarFilled } from '@ant-design/icons';
 
 const UserRepos = ({ repos, loading }) => {
+	const reducer = (accumulator, item) => {
+		return accumulator + item?.stargazers_count;
+	};
+	const totalStarts = repos.reduce(reducer, 0);
+
 	const handleRedirect = (path) => {
 		window.location.href = path;
 	};
 	return (
 		<div>
 			<h2>Repositories</h2>
+			<p>
+				<StarFilled /> {totalStarts}
+			</p>
 			<List
 				itemLayout="horizontal"
 				dataSource={repos}
