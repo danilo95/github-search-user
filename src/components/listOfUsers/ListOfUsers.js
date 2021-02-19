@@ -1,10 +1,13 @@
 import React from 'react';
 import { List } from 'antd';
 import FavoriteItem from '../favoriteItem/FavoriteItem';
-import { TitleContainer } from '../globalStyle/Index';
+import { TitleContainer, ListTitle } from '../globalStyle/Index';
 import History from '../history/History';
 
 const ListOfUsers = ({ items }) => {
+	const handleRedirect = (user) => {
+		History.push(`/user/${user}`);
+	};
 	return (
 		<div>
 			<List
@@ -20,22 +23,20 @@ const ListOfUsers = ({ items }) => {
 								height={250}
 								alt="profile-pic"
 								src={item.avatar_url}
-								onClick={() => {
-									History.push(`/user/${item.login}`);
-								}}
+								onClick={() => handleRedirect(item.login)}
 							/>
 						}
 					>
 						<List.Item.Meta
 							title={
 								<TitleContainer>
-									<span
-										onClick={() => {
-											History.push(`/user/${item.login}`);
-										}}
+									<ListTitle
+										onClick={() =>
+											handleRedirect(item.login)
+										}
 									>
 										{item.login}
-									</span>
+									</ListTitle>
 									<FavoriteItem
 										id={item.id}
 										userName={item.login}

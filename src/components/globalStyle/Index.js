@@ -27,6 +27,13 @@ export const Label = styled.div`
 	}
 `;
 
+export const ListTitle = styled.span`
+	&:hover {
+		cursor: pointer;
+		color: blue;
+	}
+`;
+
 export const Footer = styled.div`
 	width: 100%;
 	justify-content: center;
