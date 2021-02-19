@@ -8,6 +8,9 @@ const initialState = {
 	loadingUserInfo: false,
 	userInfo: {},
 	userError: {},
+	loadingUserRepos: false,
+	userRepos: [],
+	userReposError: {},
 };
 
 export default (state = initialState, action) => {
@@ -26,6 +29,13 @@ export default (state = initialState, action) => {
 				loadingUserInfo: false,
 				userError: {},
 			};
+		case types.GET_USER_REPOS:
+			return {
+				...state,
+				userRepos: action.payload,
+				loadingUserRepos: false,
+				userReposError: {},
+			};
 		case types.TOTAL_USERS:
 			return {
 				...state,
@@ -38,6 +48,13 @@ export default (state = initialState, action) => {
 				totalUsers: 0,
 				listOfUsers: [],
 				error: action.payload,
+			};
+		case types.USER_REPOS_ERROR:
+			return {
+				...state,
+				loadingUserRepos: false,
+				userRepos: [],
+				userReposError: action.payload,
 			};
 		case types.USER_ERROR:
 			return {
@@ -56,6 +73,11 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				loadingUserInfo: action.payload,
+			};
+		case types.LOADING_USER_REPOS:
+			return {
+				...state,
+				loadingUserRepos: action.payload,
 			};
 		default:
 			return state;

@@ -29,6 +29,20 @@ export const getUserInfo = (user) => {
 	return result;
 };
 
+export const getUserRepos = (user) => {
+	let result = url
+		.get(`/users/${user}/repos`)
+		.then((response) => {
+			console.log(response.data);
+			return response.data;
+		})
+		.catch((error) => {
+			return hadleError(error.response);
+		});
+
+	return result;
+};
+
 const hadleError = (httpRequest) => {
 	let { status, data } = httpRequest;
 	let { message: serverMessage } = data;

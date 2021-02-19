@@ -1,4 +1,8 @@
-import { getListOfUsers, getUserInfo } from '../components/api/Api';
+import {
+	getListOfUsers,
+	getUserInfo,
+	getUserRepos,
+} from '../components/api/Api';
 
 export const types = {
 	GET_ALL_USERS: 'GET_ALL_USERS',
@@ -8,6 +12,9 @@ export const types = {
 	GET_USER_INFO: 'GET_USER_INFO',
 	LOADING_USER_INFO: 'LOADING_USER_INFO',
 	USER_ERROR: 'USER_ERROR',
+	GET_USER_REPOS: 'GET_USER_REPOS',
+	LOADING_USER_REPOS: 'LOADING_USER_REPOS',
+	USER_REPOS_ERROR: 'USER_REPOS_ERROR',
 };
 
 export const loadingUsers = () => (dispatch) => {
@@ -40,5 +47,21 @@ export const getUserInfoById = (id) => async (dispatch) => {
 		});
 	} else {
 		dispatch({ type: types.GET_USER_INFO, payload: response });
+	}
+};
+
+export const loadingRepos = () => (dispatch) => {
+	dispatch({ type: types.LOADING_USER_REPOS, payload: true });
+};
+
+export const getUserReposById = (id) => async (dispatch) => {
+	const response = await getUserRepos(id);
+	if (response.error) {
+		dispatch({
+			type: types.USER_REPOS_ERROR,
+			payload: response.error,
+		});
+	} else {
+		dispatch({ type: types.GET_USER_REPOS, payload: response });
 	}
 };
