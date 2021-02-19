@@ -11,7 +11,7 @@ export const HeaderWrapper = styled.div`
 	flex-wrap: wrap;
 	align-items: center;
 	max-height: 60px;
-	background: #e2513a;
+	background: #1890ff;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 `;
 
