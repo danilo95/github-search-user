@@ -18,6 +18,15 @@ export const TitleContainer = styled.div`
 	width: 100px;
 `;
 
+export const Label = styled.div`
+	display: flex;
+	height: 20px;
+	font-weight: bold;
+	p {
+		margin-left: 10px;
+	}
+`;
+
 export const Footer = styled.div`
 	width: 100%;
 	justify-content: center;

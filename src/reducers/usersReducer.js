@@ -5,6 +5,9 @@ const initialState = {
 	totalUsers: 0,
 	loadingListOfUsers: false,
 	error: {},
+	loadingUserInfo: false,
+	userInfo: {},
+	userError: {},
 };
 
 export default (state = initialState, action) => {
@@ -15,6 +18,13 @@ export default (state = initialState, action) => {
 				listOfUsers: action.payload,
 				loadingListOfUsers: false,
 				error: {},
+			};
+		case types.GET_USER_INFO:
+			return {
+				...state,
+				userInfo: action.payload,
+				loadingUserInfo: false,
+				userError: {},
 			};
 		case types.TOTAL_USERS:
 			return {
@@ -29,11 +39,23 @@ export default (state = initialState, action) => {
 				listOfUsers: [],
 				error: action.payload,
 			};
+		case types.USER_ERROR:
+			return {
+				...state,
+				loadingUserInfo: false,
+				userInfo: [],
+				userError: action.payload,
+			};
 
 		case types.LOADING_USERS:
 			return {
 				...state,
 				loadingListOfUsers: action.payload,
+			};
+		case types.LOADING_USER_INFO:
+			return {
+				...state,
+				loadingUserInfo: action.payload,
 			};
 		default:
 			return state;

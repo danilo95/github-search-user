@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { getUserInfoById, loadingUserInfo } from '../../actions/UsersAction';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import UserInfo from '../userInfo/UserInfo';
+import LoadingView from '../loading/Loading';
+import ErrorPage from '../errorPage/ErrorPage';
 
 const SelectedUser = () => {
-	return <div></div>;
+	const dispatch = useDispatch();
+	let { id } = useParams();
+	const { loadingUserInfo: loadingInfo, userInfo, userError } = useSelector(
+		(state) => state.users
+	);
+
+	useEffect(() => {
+		dispatch(loadingUserInfo());
+		dispatch(getUserInfoById(id));
+	}, []);
+
+	return (
+		<div>
+			<UserInfo user={userInfo} />
+		</div>
+	);
 };
 
 export default SelectedUser;

@@ -20,14 +20,22 @@ const ListOfUsers = ({ items }) => {
 								height={250}
 								alt="profile-pic"
 								src={item.avatar_url}
-								onClick={() => console.log(1)}
+								onClick={() => {
+									History.push(`/user/${item.login}`);
+								}}
 							/>
 						}
 					>
 						<List.Item.Meta
 							title={
 								<TitleContainer>
-									<span>{item.login}</span>
+									<span
+										onClick={() => {
+											History.push(`/user/${item.login}`);
+										}}
+									>
+										{item.login}
+									</span>
 									<FavoriteItem
 										id={item.id}
 										userName={item.login}

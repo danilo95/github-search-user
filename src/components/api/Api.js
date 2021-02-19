@@ -16,6 +16,18 @@ export const getListOfUsers = (params, page) => {
 
 	return result;
 };
+export const getUserInfo = (user) => {
+	let result = url
+		.get(`/users/${user}`)
+		.then((response) => {
+			return response.data;
+		})
+		.catch((error) => {
+			return hadleError(error.response);
+		});
+
+	return result;
+};
 
 const hadleError = (httpRequest) => {
 	let { status, data } = httpRequest;
