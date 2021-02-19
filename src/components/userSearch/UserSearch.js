@@ -10,11 +10,10 @@ import { Footer, TotalDisplay } from '../globalStyle/Index';
 
 const UserSearch = () => {
 	const dispatch = useDispatch();
-
 	const { listOfUsers, loadingListOfUsers, totalUsers, error } = useSelector(
 		(state) => state.users
 	);
-	let totalPages = totalUsers / 30;
+	let totalPages = totalUsers / 20;
 
 	const [searchTerm, setSearchTerm] = useState('');
 

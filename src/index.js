@@ -6,13 +6,14 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Router } from 'react-router-dom';
 import History from './components/history/History';
+import InitAnimation from './components/initAnimation/InitAnimation';
 import reportWebVitals from './reportWebVitals';
 
 import reducers from './reducers/Index';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
-const renderLoader = () => <div>estoy cargando</div>;
+const renderLoader = () => <InitAnimation />;
 
 ReactDOM.render(
 	<React.StrictMode>
