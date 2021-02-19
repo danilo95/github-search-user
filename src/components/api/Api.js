@@ -33,7 +33,6 @@ export const getUserRepos = (user) => {
 	let result = url
 		.get(`/users/${user}/repos`)
 		.then((response) => {
-			console.log(response.data);
 			return response.data;
 		})
 		.catch((error) => {
