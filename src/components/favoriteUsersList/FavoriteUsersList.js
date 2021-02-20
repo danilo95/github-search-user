@@ -33,8 +33,8 @@ const FavoriteUsersList = () => {
 						key={item.id}
 						extra={
 							<img
-								width={250}
-								height={250}
+								width={150}
+								height={150}
 								alt="profile-pic"
 								src={item.img}
 								onClick={() => handleRedirect(item.userName)}

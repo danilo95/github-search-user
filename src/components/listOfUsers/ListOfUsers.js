@@ -19,8 +19,8 @@ const ListOfUsers = ({ items }) => {
 						key={item.id}
 						extra={
 							<img
-								width={250}
-								height={250}
+								width={150}
+								height={150}
 								alt="profile-pic"
 								src={item.avatar_url}
 								onClick={() => handleRedirect(item.login)}
@@ -49,7 +49,7 @@ const ListOfUsers = ({ items }) => {
 									type="primary"
 									onClick={() => handleRedirect(item.login)}
 								>
-									Show user info
+									{`Show ${item.login} info`}
 								</Button>
 							}
 						/>
