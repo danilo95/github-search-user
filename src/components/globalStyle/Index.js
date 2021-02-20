@@ -34,6 +34,16 @@ export const ListTitle = styled.span`
 	}
 `;
 
+export const StartContainer = styled.div`
+	width: 35px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	svg {
+		color: yellow;
+	}
+`;
+
 export const Footer = styled.div`
 	width: 100%;
 	justify-content: center;

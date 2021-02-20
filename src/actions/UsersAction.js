@@ -54,8 +54,8 @@ export const loadingRepos = () => (dispatch) => {
 	dispatch({ type: types.LOADING_USER_REPOS, payload: true });
 };
 
-export const getUserReposById = (id) => async (dispatch) => {
-	const response = await getUserRepos(id);
+export const getUserReposById = (id, page) => async (dispatch) => {
+	const response = await getUserRepos(id, page);
 	if (response.error) {
 		dispatch({
 			type: types.USER_REPOS_ERROR,

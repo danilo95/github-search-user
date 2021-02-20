@@ -29,9 +29,9 @@ export const getUserInfo = (user) => {
 	return result;
 };
 
-export const getUserRepos = (user) => {
+export const getUserRepos = (user, page) => {
 	let result = url
-		.get(`/users/${user}/repos`)
+		.get(`/users/${user}/repos?per_page=10&page=${page}`)
 		.then((response) => {
 			return response.data;
 		})

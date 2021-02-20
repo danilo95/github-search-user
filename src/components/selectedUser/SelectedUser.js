@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	getUserInfoById,
 	loadingUserInfo,
@@ -11,8 +11,11 @@ import UserInfo from '../userInfo/UserInfo';
 import UserRepos from '../userRepos/UserRepos';
 import LoadingView from '../loading/Loading';
 import ErrorPage from '../errorPage/ErrorPage';
+import { Footer } from '../globalStyle/Index';
+import { Pagination } from 'antd';
 
 const SelectedUser = () => {
+	const [currentPage, setCurrentPage] = useState(1);
 	const dispatch = useDispatch();
 	let { id } = useParams();
 	const {
@@ -28,8 +31,14 @@ const SelectedUser = () => {
 		dispatch(loadingUserInfo());
 		dispatch(getUserInfoById(id));
 		dispatch(loadingRepos());
-		dispatch(getUserReposById(id));
+		dispatch(getUserReposById(id, currentPage));
 	}, []);
+
+	const handlePagination = (page) => {
+		setCurrentPage(page);
+		dispatch(loadingRepos());
+		dispatch(getUserReposById(id, page));
+	};
 
 	return (
 		<div>
@@ -39,7 +48,22 @@ const SelectedUser = () => {
 			{loadingInfo && <LoadingView />}
 			{!loadingInfo && !userError.code && <UserInfo user={userInfo} />}
 			{!userReposError.code && (
-				<UserRepos loading={loadingUserRepos} repos={userRepos} />
+				<div>
+					<UserRepos
+						loading={loadingUserRepos}
+						repos={userRepos}
+						totalRepos={userInfo.public_repos}
+					/>
+					<Footer>
+						<Pagination
+							simple
+							current={currentPage}
+							total={userInfo.public_repos}
+							onChange={handlePagination}
+							defaultPageSize={10}
+						/>
+					</Footer>
+				</div>
 			)}
 		</div>
 	);
