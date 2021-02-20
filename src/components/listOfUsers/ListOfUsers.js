@@ -3,6 +3,7 @@ import { List, Button } from 'antd';
 import FavoriteItem from '../favoriteItem/FavoriteItem';
 import { TitleContainer, ListTitle } from '../globalStyle/Index';
 import History from '../history/History';
+import GotoTop from '../goToTop/GoToTop';
 
 const ListOfUsers = ({ items }) => {
 	const handleRedirect = (user) => {
@@ -10,6 +11,7 @@ const ListOfUsers = ({ items }) => {
 	};
 	return (
 		<div>
+			<GotoTop />
 			<List
 				itemLayout="vertical"
 				size="large"

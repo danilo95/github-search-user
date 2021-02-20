@@ -44,6 +44,26 @@ export const StartContainer = styled.div`
 	}
 `;
 
+export const BtnToTop = styled.button`
+	display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 30px;
+	z-index: 99;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	background-color: #1890ff;
+	color: white;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 100%;
+	opacity: 0.5;
+	&:hover {
+		opacity: 1;
+	}
+`;
+
 export const Footer = styled.div`
 	width: 100%;
 	justify-content: center;
