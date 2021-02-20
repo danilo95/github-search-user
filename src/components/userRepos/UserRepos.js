@@ -9,7 +9,7 @@ const UserRepos = ({ repos, loading }) => {
 	const totalStarts = repos.reduce(reducer, 0);
 
 	const handleRedirect = (path) => {
-		window.location.href = path;
+		window.open(path, '_blank');
 	};
 	return (
 		<div>

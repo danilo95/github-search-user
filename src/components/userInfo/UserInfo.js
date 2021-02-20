@@ -11,7 +11,7 @@ import { Label } from '../globalStyle/Index';
 
 const UserInfo = ({ user }) => {
 	const handleRedirect = (path) => {
-		window.location.href = path;
+		window.open(path, '_blank');
 	};
 
 	const Content = ({ children }) => (
