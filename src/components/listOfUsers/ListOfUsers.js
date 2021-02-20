@@ -1,16 +1,16 @@
 import React from 'react';
 import { List, Button } from 'antd';
 import FavoriteItem from '../favoriteItem/FavoriteItem';
-import { TitleContainer, ListTitle } from '../globalStyle/Index';
 import History from '../history/History';
 import GotoTop from '../goToTop/GoToTop';
+import { TitleContainer, ListTitle, UserContainer } from '../globalStyle/Index';
 
 const ListOfUsers = ({ items }) => {
 	const handleRedirect = (user) => {
 		History.push(`/user/${user}`);
 	};
 	return (
-		<div>
+		<UserContainer>
 			<GotoTop />
 			<List
 				itemLayout="vertical"
@@ -58,7 +58,7 @@ const ListOfUsers = ({ items }) => {
 					</List.Item>
 				)}
 			/>
-		</div>
+		</UserContainer>
 	);
 };
 

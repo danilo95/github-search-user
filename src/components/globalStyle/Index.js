@@ -64,6 +64,26 @@ export const BtnToTop = styled.button`
 	}
 `;
 
+export const UserContainer = styled.div`
+	@media (max-width: 500px) {
+		.ant-list {
+			.ant-spin-container {
+				.ant-list-items {
+					.ant-list-item {
+						.ant-list-item-main {
+							.ant-list-item-meta-content {
+								display: flex;
+								flex-direction: column;
+								align-items: center;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+`;
+
 export const Footer = styled.div`
 	width: 100%;
 	justify-content: center;

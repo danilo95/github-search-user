@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { List, Button } from 'antd';
 import { deleteFavorite } from '../utils/Utils';
 import History from '../history/History';
-import { ListTitle } from '../globalStyle/Index';
+import { ListTitle, UserContainer } from '../globalStyle/Index';
 
 const FavoriteUsersList = () => {
 	let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
@@ -22,7 +22,7 @@ const FavoriteUsersList = () => {
 	};
 
 	return (
-		<div>
+		<UserContainer>
 			<h2>Favorite Users</h2>
 			<List
 				itemLayout="vertical"
@@ -51,19 +51,31 @@ const FavoriteUsersList = () => {
 									{item.userName}
 								</ListTitle>
 							}
+							description={
+								<div>
+									<Button
+										type="primary"
+										onClick={() => {
+											handleRedirect(item.userName);
+										}}
+									>
+										View Profile
+									</Button>
+									<Button
+										danger
+										onClick={() => {
+											handleDeleteFavorite(item.id);
+										}}
+									>
+										Delete
+									</Button>
+								</div>
+							}
 						/>
-						<Button
-							danger
-							onClick={() => {
-								handleDeleteFavorite(item.id);
-							}}
-						>
-							Delete
-						</Button>
 					</List.Item>
 				)}
 			/>
-		</div>
+		</UserContainer>
 	);
 };
 
