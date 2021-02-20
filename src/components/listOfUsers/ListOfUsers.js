@@ -1,5 +1,5 @@
 import React from 'react';
-import { List } from 'antd';
+import { List, Button } from 'antd';
 import FavoriteItem from '../favoriteItem/FavoriteItem';
 import { TitleContainer, ListTitle } from '../globalStyle/Index';
 import History from '../history/History';
@@ -43,6 +43,14 @@ const ListOfUsers = ({ items }) => {
 										img={item.avatar_url}
 									/>
 								</TitleContainer>
+							}
+							description={
+								<Button
+									type="primary"
+									onClick={() => handleRedirect(item.login)}
+								>
+									Show user info
+								</Button>
 							}
 						/>
 					</List.Item>
