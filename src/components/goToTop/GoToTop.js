@@ -17,9 +17,13 @@ const GotoTop = () => {
 			document.body.scrollTop > 460 ||
 			document.documentElement.scrollTop > 460
 		) {
-			mybutton.style.display = 'block';
+			if (mybutton) {
+				mybutton.style.display = 'block';
+			}
 		} else {
-			mybutton.style.display = 'none';
+			if (mybutton) {
+				mybutton.style.display = 'none';
+			}
 		}
 	};
 
